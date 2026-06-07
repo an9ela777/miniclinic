@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>掛號統計頁面</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        .card { border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 5px; background: #f9f9f9; }
+        table { border-collapse: collapse; width: 50%; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #004b97; color: white; }
+    </style>
+</head>
+<body>
+
+    <h2>🏥 門診掛號系統統計管理</h2>
+     <nav>
+        <a th:href="@{/}">首頁</a>
+        <a th:href="@{/doctors}">醫師清單</a>
+        <a th:href="@{/patients}">病患資料</a>
+        <a th:href="@{/appointment/new}">線上掛號</a>
+        <a th:href="@{/appointments}">掛號紀錄</a>
+        <a th:href="@{/login}">醫師登入</a>  
+    </nav>
+    <hr>
+
+    <div class="card">
+        <h3> 基礎數據統計</h3>
+        <p> 醫師總數：<strong th:text="${doctorCount}">0</strong> 位</p>
+        <p> 病患總數：<strong th:text="${patientCount}">0</strong> 人</p>
+        <p> 掛號總數：<strong th:text="${appointmentCount}">0</strong> 筆</p>
+    </div>
+
+    <div class="card">
+        <h3> 依科別分組統計掛號數</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>科別名稱</th>
+                    <th>掛號看診人數</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="entry : ${deptStats}">
+                    <td th:text="${entry.key}">科別</td>
+                    <td th:text="${entry.value}">0</td>
+                </tr>
+                <tr th:if="${#maps.isEmpty(deptStats)}">
+                    <td colspan="2" style="text-align: center; color: gray;">目前暫無任何掛號紀錄</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
