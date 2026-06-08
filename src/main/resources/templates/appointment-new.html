@@ -40,6 +40,9 @@
             <input type="text" th:field="*{chartNo}" placeholder="TEST00001">
             <div class="field-error" th:if="${#fields.hasErrors('chartNo')}" th:errors="*{chartNo}"></div>
         </div>
+        <div th:if="${error}" style="color: red; margin-bottom: 15px; font-weight: bold; text-align: center;">
+            <p th:text="${error}"></p>
+        </div>
 
         <div class="field">
             <label>選擇醫師</label>
