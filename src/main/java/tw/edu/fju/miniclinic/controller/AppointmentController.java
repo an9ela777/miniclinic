@@ -43,7 +43,7 @@ public class AppointmentController {
 
     @PostMapping("/appointment/new")
     public String submitAppointment(
-        @Valid@ModelAttribute AppointmentForm form,
+        @Valid @ModelAttribute("form") AppointmentForm form,
         BindingResult result,
         Model model) {
 
