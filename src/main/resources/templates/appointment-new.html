@@ -14,7 +14,7 @@
         input, select { width: 100%; padding: 8px; border: 1px solid #E2E8F0; border-radius: 4px; font-size: 14px; box-sizing: border-box; }
         button { background: #14B8A6; color: white; padding: 10px 24px; border: none; border-radius: 4px; font-size: 15px; cursor: pointer; }
         button:hover { background: #0D9488; }
-        .error { background: #FEE2E2; color: #991B1B; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; }
+        .error { background: #FEE2E2; color: #991B1B; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; font-weight: bold; text-align: center; }
         .field-error { color: #DC2626; font-size: 13px; margin-top: 4px; }
     </style>
 </head>
@@ -31,15 +31,16 @@
 
     <h1>線上掛號</h1>
 
+    <div class="error" th:if="${error != null}">
+        <span th:text="${error}"></span>
+    </div>
+
     <form th:action="@{/appointment/new}" th:object="${form}" method="post">
 
         <div class="field">
             <label>病歷號</label>
             <input type="text" th:field="*{chartNo}" placeholder="TEST00001">
             <div class="field-error" th:if="${#fields.hasErrors('chartNo')}" th:errors="*{chartNo}"></div>
-        </div>
-        <div th:if="${error}" style="color: red; margin-bottom: 15px; font-weight: bold; text-align: center;">
-            <p th:text="${error}"></p>
         </div>
 
         <div class="field">
