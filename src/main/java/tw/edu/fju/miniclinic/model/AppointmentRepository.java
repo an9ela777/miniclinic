@@ -15,6 +15,8 @@ List<Appointment> findByApptDateAndDoctor(LocalDate localDate, Doctor doctor);
 List<Appointment> findByDoctorAndApptDate(Doctor doctor, LocalDate apptDate);  // 新加入
 
 long countByApptDateBetween(LocalDate from, LocalDate to);
+long countByStatus(String status);
+
 @Query("SELECT d.department, COUNT(a) FROM Appointment a JOIN a.doctor d GROUP BY d.department")
 List<Object[]> countAppointmentsByDepartment();
 

@@ -14,6 +14,9 @@ INSERT OR IGNORE INTO appointment VALUES (4, '2026-05-20', 'BOOKED', 'AM', 'D001
 INSERT OR IGNORE INTO appointment VALUES (5, '2026-05-20', 'BOOKED', 'PM', 'D002', 'TEST00001');
 INSERT OR IGNORE INTO appointment VALUES (6, '2026-05-21', 'BOOKED', 'AM', 'D001', 'TEST00001');
 
+UPDATE appointment SET status = 'COMPLETED' WHERE appt_id = 2;
+UPDATE appointment SET status = 'CANCELLED' WHERE appt_id = 3;
+
 -- 初始醫師資料（5 位）帶入 pass1234 的 BCrypt 雜湊
 INSERT OR IGNORE INTO doctor (doctor_id, name, department, specialty, password_hash) VALUES
     ('D001', '陳志明醫師', '家醫科', '一般內科、慢性病管理','$2a$10$XhyEgd4qh5TXJa7NkMg3gOqsJxATykAyJERH7ZqTD7eEPVlcmgewm'),
